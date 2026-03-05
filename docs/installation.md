@@ -1,9 +1,9 @@
-# Installation Guide
+# Installation Guide | 安装指南
 
 ## Method 1: Claude Code Skill Install (Recommended)
 
 ```bash
-claude skill add --from github cloudyview/gather-requirements
+claude skill add --from github cloudyview/claude-code-requirements-skill
 ```
 
 This automatically installs the skill into your Claude Code environment.
@@ -13,7 +13,7 @@ This automatically installs the skill into your Claude Code environment.
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/cloudyview/gather-requirements.git
+git clone https://github.com/cloudyview/claude-code-requirements-skill.git
 ```
 
 2. Copy the skill folder into your project:

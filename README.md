@@ -1,4 +1,4 @@
-# Gather Requirements
+# Claude Code Requirements Skill
 
 > **Stop coding before you know what to build.**
 >
@@ -10,7 +10,7 @@ A Claude Code skill that adds an interactive requirements gathering phase to you
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Claude Code Skill](https://img.shields.io/badge/Claude%20Code-Skill-green)](https://docs.anthropic.com/en/docs/claude-code)
-[![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)](https://github.com/cloudyview/gather-requirements/releases)
+[![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)](https://github.com/cloudyview/claude-code-requirements-skill/releases)
 
 ---
 
@@ -51,14 +51,14 @@ The skill collects your requirements **segment by segment**, organizes them into
 ### Claude Code (Recommended | 推荐)
 
 ```bash
-claude skill add --from github cloudyview/gather-requirements
+claude skill add --from github cloudyview/claude-code-requirements-skill
 ```
 
 ### Manual Install | 手动安装
 
 ```bash
 # Clone the repo | 克隆仓库
-git clone https://github.com/cloudyview/gather-requirements.git
+git clone https://github.com/cloudyview/claude-code-requirements-skill.git
 
 # Copy skill into your project | 复制到你的项目
 cp -r gather-requirements/skills/gather-requirements YOUR_PROJECT/.claude/skills/
