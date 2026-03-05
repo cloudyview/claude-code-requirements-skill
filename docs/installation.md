@@ -3,7 +3,7 @@
 ## Method 1: Claude Code Skill Install (Recommended)
 
 ```bash
-claude skill add --from github YOUR_USERNAME/gather-requirements
+claude skill add --from github cloudyview/gather-requirements
 ```
 
 This automatically installs the skill into your Claude Code environment.
@@ -13,7 +13,7 @@ This automatically installs the skill into your Claude Code environment.
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/gather-requirements.git
+git clone https://github.com/cloudyview/gather-requirements.git
 ```
 
 2. Copy the skill folder into your project:

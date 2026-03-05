@@ -1,98 +1,130 @@
 # Gather Requirements
 
 > **Stop coding before you know what to build.**
+>
+> **在动手写代码之前，先搞清楚要做什么。**
 
 A Claude Code skill that adds an interactive requirements gathering phase to your workflow. Describe your feature in segments, get a structured requirements document, then proceed to planning with confidence.
 
+一个 Claude Code 技能，为你的开发工作流添加交互式需求收集阶段。分段描述你的功能需求，获得结构化需求文档，然后自信地进入开发。
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Claude Code Skill](https://img.shields.io/badge/Claude%20Code-Skill-green)](https://docs.anthropic.com/en/docs/claude-code)
-[![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)](https://github.com/YOUR_USERNAME/gather-requirements/releases)
+[![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)](https://github.com/cloudyview/gather-requirements/releases)
 
-## The Problem
+---
+
+## The Problem | 问题
 
 Most AI coding workflows go straight from idea to implementation:
 
+大多数 AI 编程工作流直接从想法跳到实现：
+
 ```
 "I want feature X" → AI starts coding → Rework → More rework → Done (maybe)
+"我想要功能X" → AI 开始写代码 → 返工 → 再返工 → 勉强完成
 ```
 
 This leads to scope creep, misunderstood requirements, and wasted effort.
 
-## The Solution
+这导致需求蔓延、需求误解和大量返工。
+
+## The Solution | 解决方案
 
 Add a structured requirements phase:
 
+添加一个结构化的需求收集阶段：
+
 ```
-"I want feature X" → /gather-requirements → Structured doc → Clarifying questions → Plan → Code
+"I want feature X" → /gather-requirements → Structured doc → Clarifying Q&A → Plan → Code
+"我想要功能X" → /gather-requirements → 结构化文档 → 反问澄清 → 方案设计 → 编码
 ```
 
 The skill collects your requirements **segment by segment**, organizes them into a structured document, then asks smart questions to fill gaps — all before a single line of code is written.
 
-## Quick Install
+技能**逐段收集**你的需求，整理成结构化文档，然后智能提问填补遗漏 — 一切在写代码之前完成。
 
-### Claude Code (Recommended)
+---
+
+## Quick Install | 快速安装
+
+### Claude Code (Recommended | 推荐)
 
 ```bash
-claude skill add --from github YOUR_USERNAME/gather-requirements
+claude skill add --from github cloudyview/gather-requirements
 ```
 
-### Manual Install
+### Manual Install | 手动安装
 
 ```bash
-# Clone into your project
-git clone https://github.com/YOUR_USERNAME/gather-requirements.git
+# Clone the repo | 克隆仓库
+git clone https://github.com/cloudyview/gather-requirements.git
 
-# Copy the skill into your project's .claude/skills/
-cp -r gather-requirements/skills/gather-requirements .claude/skills/
+# Copy skill into your project | 复制到你的项目
+cp -r gather-requirements/skills/gather-requirements YOUR_PROJECT/.claude/skills/
 ```
 
 Or simply copy `skills/gather-requirements/SKILL.md` into your project's `.claude/skills/` directory.
 
-## Usage
+或者直接将 `skills/gather-requirements/SKILL.md` 复制到你项目的 `.claude/skills/` 目录下。
 
-### 1. Start the skill
+See [docs/installation.md](docs/installation.md) for all installation methods.
+
+---
+
+## Usage | 使用方法
+
+### 1. Start the skill | 启动技能
 
 ```
 /gather-requirements
 ```
 
-### 2. Name your feature
+### 2. Name your feature | 命名功能
 
-The skill asks for a short feature name (e.g., `ai-dubbing`, `user-auth`).
+The skill asks for a short feature name (e.g., `ai-dubbing`, `timeline-editor`).
 
-### 3. Describe your feature in segments
+技能会要求输入一个简短的功能名（如 `ai-dubbing`、`timeline-editor`）。
+
+### 3. Describe in segments | 分段描述
 
 Just talk naturally. Describe one aspect at a time:
 
-```
-User: "I want a timeline editor where users can drag video clips onto tracks,
-       trim them, and preview the result in real-time."
+自然地说就行。每次描述一个方面：
 
-Claude: Recorded: Timeline editor with drag-and-drop clips, trimming, and real-time preview.
+```
+User: "我想要一个时间轴编辑器，用户可以把视频片段拖到轨道上，
+       裁剪片段，实时预览效果。"
+
+Claude: 已记录：时间轴编辑器，支持拖拽视频片段、裁剪和实时预览。
         还有其他需要补充的吗？
 
-User: "It should support multiple audio tracks and allow adjusting volume per clip."
+User: "要支持多个音频轨道，每个片段可以调音量。"
 
-Claude: Recorded: Multi-track audio support with per-clip volume control.
+Claude: 已记录：多音轨支持，可逐片段调节音量。
         还有其他需要补充的吗？
 
-User: "That's all."
+User: "没有了。"
 
-Claude: Let me review the requirements and ask some clarifying questions...
+Claude: 让我检查一下需求文档，提几个澄清问题...
 ```
 
-### 4. Answer clarifying questions
+### 4. Answer clarifying questions | 回答澄清问题
 
-The skill analyzes your requirements for gaps and asks targeted questions:
+The skill analyzes your requirements for gaps:
 
-- Missing user flows
-- Edge cases
-- Data model questions
-- UI/UX decisions
+技能会分析需求中的遗漏：
 
-### 5. Get your structured document
+- Missing user flows | 缺失的用户流程
+- Edge cases | 边界情况
+- Data model questions | 数据模型问题
+- UI/UX decisions | 交互设计决策
 
-The final output is a clean requirements document at `docs/requirements/<feature-name>.md`:
+### 5. Get your document | 获取需求文档
+
+Final output at `docs/requirements/<feature-name>.md`:
+
+最终输出在 `docs/requirements/<功能名>.md`：
 
 ```markdown
 # Timeline Editor — Requirements
@@ -103,68 +135,85 @@ The final output is a clean requirements document at `docs/requirements/<feature
 ## 1. Feature Overview
 - Visual timeline editor for video clip arrangement
 - Real-time preview capability
-...
 
 ## 2. User Stories
 - As an editor, I want to drag clips onto tracks...
-...
 ```
 
-### 6. Proceed to implementation
+### 6. Next step | 下一步
 
-Use the requirements document as input for your planning phase (e.g., `/planning-with-files`).
+Use the requirements document as input for planning (e.g., `/planning-with-files` or Claude Code Plan Mode).
 
-## Document Structure
+将需求文档作为方案设计的输入（如 `/planning-with-files` 或 Claude Code Plan Mode）。
 
-The generated requirements document has 7 sections:
+---
 
-| Section | Purpose |
-|---------|---------|
-| **Feature Overview** | What is this feature? High-level description |
-| **User Stories** | Who uses it and how? |
-| **Core Requirements** | Specific functionality — the "must haves" |
-| **Interaction Design** | UI/UX behavior, user flows |
-| **Data Model** | What data is involved, relationships |
-| **Technical Constraints** | Limitations, dependencies, performance needs |
-| **Open Questions** | Resolved during the clarification phase |
+## Document Structure | 文档结构
 
-After finalization, an **Implementation Notes** section is added with technical suggestions.
+| Section | 章节 | Purpose | 说明 |
+|---------|------|---------|------|
+| Feature Overview | 功能概述 | What is this feature? | 这个功能是什么？ |
+| User Stories | 用户故事 | Who uses it and how? | 谁用？怎么用？ |
+| Core Requirements | 核心需求 | Must-have functionality | 必须实现的功能 |
+| Interaction Design | 交互设计 | UI/UX behavior | 界面和交互行为 |
+| Data Model | 数据模型 | Data and relationships | 涉及的数据和关系 |
+| Technical Constraints | 技术约束 | Limits and dependencies | 限制和依赖 |
+| Open Questions | 待澄清问题 | Resolved during clarification | 在反问阶段解决 |
 
-## Works Great With
+After finalization, an **Implementation Notes** (实现建议) section is added.
 
-- **[planning-with-files](https://github.com/OthmanAdi/planning-with-files)** — Use gather-requirements first, then planning-with-files for implementation planning
-- **Claude Code Plan Mode** — Feed the requirements doc into plan mode for architecture design
-- Any AI coding workflow that benefits from clear requirements
+---
 
-## Supported Languages
+## Works Great With | 最佳搭配
 
-The skill adapts to the user's language. Requirements can be collected and documented in:
+| Tool | Flow |
+|------|------|
+| **[planning-with-files](https://github.com/OthmanAdi/planning-with-files)** | Requirements → Planning → Code |
+| **Claude Code Plan Mode** | Requirements → Architecture → Code |
+| **Any AI coding workflow** | Requirements → Your process → Code |
+
+```
+/gather-requirements  →  需求文档  →  /planning-with-files  →  实现
+     (收集需求)          (结构化 .md)      (方案设计)           (编码)
+```
+
+---
+
+## Supported Languages | 支持语言
+
+The skill adapts to the user's language:
 - English
-- Chinese (中文)
+- 中文
 - Any language the user communicates in
 
-## Project Structure
+技能会自动适配用户的语言。
+
+---
+
+## Project Structure | 项目结构
 
 ```
 gather-requirements/
-├── README.md                                    # This file
-├── LICENSE                                      # MIT License
+├── README.md                          # This file | 本文件
+├── LICENSE                            # MIT License
 ├── docs/
-│   ├── installation.md                          # Detailed installation guide
-│   └── workflow.md                              # Workflow diagram
+│   ├── installation.md                # Installation guide | 安装指南
+│   └── workflow.md                    # Workflow diagram | 流程图
 ├── examples/
-│   └── example-requirements.md                  # Sample output
+│   └── example-requirements.md        # Sample output | 示例输出
 └── skills/
     └── gather-requirements/
-        ├── SKILL.md                             # Skill definition (core)
+        ├── SKILL.md                   # Skill definition | 技能定义（核心）
         └── templates/
-            └── requirements.md                  # Document template
+            └── requirements.md        # Document template | 文档模板
 ```
 
-## Contributing
+## Contributing | 贡献
 
-Contributions welcome! If you have ideas for improving the requirements gathering workflow, please open an issue or PR.
+Contributions welcome! Open an issue or PR if you have ideas for improving the requirements gathering workflow.
 
-## License
+欢迎贡献！如果你有改进需求收集流程的想法，请提 Issue 或 PR。
+
+## License | 许可
 
 MIT License — see [LICENSE](LICENSE) for details.
