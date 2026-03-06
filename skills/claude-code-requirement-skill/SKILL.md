@@ -1,5 +1,5 @@
 ---
-name: gather-requirements
+name: claude-code-requirement-skill
 version: "1.0.0"
 description: Interactive requirements gathering — collect user needs segment by segment, organize into structured documents, then ask clarifying questions to fill gaps. Use before planning or coding any new feature.
 user-invocable: true
